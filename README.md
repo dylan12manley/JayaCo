@@ -1,8 +1,7 @@
-# React + Vite
+# JJSM Co.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Created by Dylan Manley for Jaya Skinner-Maginnis using React, Javascript, CSS, Vite and, Node.js.
 
-Currently, two official plugins are available:
+## History
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Version 0.0.1 (12-28-24) - Initial creation of the project.
