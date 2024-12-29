@@ -6,8 +6,17 @@ export default function HomeForm() {
   const [siteH2, setSiteH2] = useState('');
   const [siteH3, setSiteH3] = useState('');
 
-  function handleSubmitHome() {
-    console.log('submit clicked');
+  useEffect(() => {
+    console.log('siteName', siteName);
+    console.log('siteH2', siteH2);
+    console.log('siteH3', siteH3);
+  }, [siteName, siteH2, siteH3]);
+
+  function handleSubmitHome(e) {
+    e.preventDefault();
+    if (e.target[0]?.value != '') setSiteName(e.target[0].value);
+    if (e.target[1]?.value != '') setSiteH2(e.target[1]?.value);
+    if (e.target[2]?.value != '') setSiteH3(e.target[2]?.value);
   }
 
   return (
