@@ -2,6 +2,7 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
+  width: 100%;
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
@@ -25,9 +26,13 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  place-items: center;
+  justify-content: center;
+  /* place-items: center; */
+  width: 100%;
   min-width: 320px;
   min-height: 100vh;
+  background-color: #bb999c;
+  color: #211103;
 }
 
 h1 {
@@ -52,6 +57,10 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+h1 {
+  margin: 0;
 }
 
 @media (prefers-color-scheme: light) {
