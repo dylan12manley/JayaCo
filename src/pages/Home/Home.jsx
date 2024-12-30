@@ -3,15 +3,16 @@ import React, { useState, useEffect } from 'react';
 
 export default function Home() {
   const [data, setData] = useState([]);
+  const [arrLen, setArrLen] = useState(0);
 
   useEffect(() => {
     fetch('http://localhost:4000/homePage')
       .then((res) => {
         return res.json();
       })
-      .then((data) => {
-        console.log(data.length);
-        setData(data);
+      .then((json) => {
+        setData(json);
+        setArrLen(json.length - 1);
       })
       .catch((error) => {
         console.log(error);
@@ -22,9 +23,9 @@ export default function Home() {
     'Loading...'
   ) : (
     <main id='home-page'>
-      <h1>{data[0].siteName}</h1>
-      <h2>{data[0].homePageH2}</h2>
-      <h3>{data[0].homePageH3}</h3>
+      <h1>{data[arrLen]?.siteName}</h1>
+      <h2>{data[arrLen]?.homePageH2}</h2>
+      <h3>{data[arrLen]?.homePageH3}</h3>
     </main>
   );
 }
