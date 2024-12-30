@@ -14,4 +14,9 @@ form {
   .form-input:last-child {
     text-align: center;
   }
+
+  .results-preview {
+    display: flex;
+    flex-direction: column;
+  }
 }
