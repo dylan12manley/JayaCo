@@ -14,9 +14,41 @@ export default function HomeForm() {
 
   function handleSubmitHome(e) {
     e.preventDefault();
-    if (e.target[0]?.value != '') setSiteName(e.target[0].value);
-    if (e.target[1]?.value != '') setSiteH2(e.target[1]?.value);
-    if (e.target[2]?.value != '') setSiteH3(e.target[2]?.value);
+    // if (e.target[0]?.value != '') setSiteName(e.target[0].value);
+    // if (e.target[1]?.value != '') setSiteH2(e.target[1]?.value);
+    // if (e.target[2]?.value != '') setSiteH3(e.target[2]?.value);
+
+    // console.log(
+    //   JSON.stringify({
+    //     siteName: e.target[0].value,
+    //     homePageH2: e.target[1]?.value,
+    //     homePageH3: e.target[2]?.value,
+    //   })
+    // );
+
+    fetch('http://localhost:4000/homePage', {
+      method: 'POST',
+      body: JSON.stringify({
+        siteName: e.target[0].value,
+        homePageH2: e.target[1]?.value,
+        homePageH3: e.target[2]?.value,
+      }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    })
+      .then((response) => {
+        console.log(response);
+      })
+      .then((data) => {
+        // Handle the response data
+        console.log(data);
+        alert('posted to api!');
+      })
+      .catch((error) => {
+        // Handle any errors
+        console.error(error);
+      });
   }
 
   return (
