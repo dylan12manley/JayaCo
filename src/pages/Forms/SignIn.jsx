@@ -1,0 +1,47 @@
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import './form.css';
+
+export default function SignIn() {
+  const auth = getAuth();
+
+  function handleSubmitSignIn() {
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        alert('user has signed in');
+        console.log(user, 'has signed in');
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        alert('an error has occured:', errorMessage);
+        console.log('error code:', errorCode);
+      });
+  }
+  return (
+    <form>
+      <h2>Sign In</h2>
+      <div className='form-input'>
+        <label htmlFor='email'>Email:</label>
+        <input
+          type='text'
+          id='email'
+          name='email'
+        ></input>
+      </div>
+      <div className='form-input'>
+        <label htmlFor='password'>Password:</label>
+        <input
+          type='text'
+          id='password'
+          name='password'
+        ></input>
+      </div>
+      <div className='form-input'>
+        <button type='submit'>Send</button>
+      </div>
+    </form>
+  );
+}
