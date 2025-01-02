@@ -2,13 +2,17 @@ import { getAuth, createUserWithEmailAndPassword, validatePassword } from 'fireb
 import './form.css';
 
 export default function SignUp() {
-  function handleSubmitSignUp() {
+  function handleSubmitSignUp(e) {
+    e.preventDefault();
     const auth = getAuth();
+    const password = e.target[1]?.value;
+    const email = e.target[0]?.value;
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed up
         const user = userCredential.user;
-        alert(user, ' has signed up successfully.');
+        console.log(user);
+        alert(email, ' has signed up successfully.');
         // ...
       })
       .catch((error) => {
@@ -30,7 +34,7 @@ export default function SignUp() {
     // }
   }
   return (
-    <form>
+    <form onSubmit={handleSubmitSignUp}>
       <h2>Sign Up</h2>
       <div className='form-input'>
         <label htmlFor='email'>Email:</label>

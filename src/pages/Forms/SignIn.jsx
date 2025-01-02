@@ -4,7 +4,11 @@ import './form.css';
 export default function SignIn() {
   const auth = getAuth();
 
-  function handleSubmitSignIn() {
+  function handleSubmitSignIn(e) {
+    e.preventDefault();
+    console.log('sign in clicked:', e.target[1]?.value, auth);
+    const password = e.target[1]?.value;
+    const email = e.target[0]?.value;
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
@@ -21,7 +25,7 @@ export default function SignIn() {
       });
   }
   return (
-    <form>
+    <form onSubmit={handleSubmitSignIn}>
       <h2>Sign In</h2>
       <div className='form-input'>
         <label htmlFor='email'>Email:</label>
