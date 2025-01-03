@@ -12,6 +12,7 @@ export default function Home() {
       })
       .then((json) => {
         setData(json);
+        console.log(json);
         setArrLen(json.length - 1);
       })
       .catch((error) => {
@@ -24,6 +25,10 @@ export default function Home() {
   ) : (
     <main id='home-page'>
       <h1>{data[arrLen]?.siteName}</h1>
+      <img
+        src={data[arrLen]?.mainImg}
+        alt="Jaya's main photo"
+      />
       <h2>{data[arrLen]?.homePageH2}</h2>
       <h3>{data[arrLen]?.homePageH3}</h3>
     </main>
