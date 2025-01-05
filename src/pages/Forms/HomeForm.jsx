@@ -5,12 +5,14 @@ export default function HomeForm() {
   const [siteName, setSiteName] = useState('');
   const [siteH2, setSiteH2] = useState('');
   const [siteH3, setSiteH3] = useState('');
+  const [mainImg, setMainImg] = useState('');
 
   function handleSubmitHome(e) {
     e.preventDefault();
     if (e.target[0]?.value != '') setSiteName(e.target[0].value);
     if (e.target[1]?.value != '') setSiteH2(e.target[1]?.value);
     if (e.target[2]?.value != '') setSiteH3(e.target[2]?.value);
+    if (e.target[3]?.value != '') setMainImg(e.target[3]?.value);
 
     fetch('http://localhost:4000/homePage', {
       method: 'POST',
@@ -18,6 +20,7 @@ export default function HomeForm() {
         siteName: e.target[0].value,
         homePageH2: e.target[1]?.value,
         homePageH3: e.target[2]?.value,
+        mainImg: e.target[3]?.value,
       }),
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
@@ -62,12 +65,27 @@ export default function HomeForm() {
         ></input>
       </div>
       <div className='form-input'>
+        <label htmlFor='mainImg'>Main Img URL:</label>
+        <input
+          type='text'
+          id='mainImg'
+          name='mainImg'
+        ></input>
+      </div>
+      <div className='form-input'>
         <button type='submit'>Send</button>
       </div>
       <div className='results-preview'>
         <span>New Site Name: {siteName}</span>
         <span>New Home Page H2: {siteH2}</span>
         <span>New Home Page H3: {siteH3}</span>
+        <span>
+          New Main Image:
+          <img
+            src={mainImg}
+            alt='main img'
+          />
+        </span>
       </div>
     </form>
   );
