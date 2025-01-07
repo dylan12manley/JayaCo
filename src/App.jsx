@@ -5,6 +5,7 @@ import Header from './components/Header/Header';
 import Home from './pages/Home/Home';
 import About from './pages/About/About';
 import Forms from './pages/Forms/Forms';
+import Error from './pages/Error/Error';
 
 export default function App() {
   return (
@@ -22,6 +23,10 @@ export default function App() {
         <Route
           path='/forms'
           element={<Forms />}
+        />
+        <Route
+          path='*'
+          element={<Error />}
         />
       </Routes>
     </Router>
