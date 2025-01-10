@@ -1,9 +1,12 @@
 import './home.css';
 import React, { useState, useEffect } from 'react';
+import useSelector from 'react-redux';
 
 export default function Home() {
   const [data, setData] = useState([]);
   const [arrLen, setArrLen] = useState(0);
+
+  const bGColor = useSelector((state) => state.bGColor.value);
 
   useEffect(() => {
     fetch('http://localhost:4000/homePage')
@@ -31,6 +34,8 @@ export default function Home() {
       />
       <h2>{data[arrLen]?.homePageH2}</h2>
       <h3>{data[arrLen]?.homePageH3}</h3>
+      <span>Background color is:</span>
+      <span style={{ background: bGColor }}>{bGColor}</span>
     </main>
   );
 }
