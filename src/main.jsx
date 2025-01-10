@@ -1,23 +1,23 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import 'dotenv/config';
+// import 'dotenv/config';
 import { initializeApp } from 'firebase/app';
 import { getAnalytics } from 'firebase/analytics';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 
 import './index.css';
 import App from './App.jsx';
+import firebaseConfig from './firebaseConfig.js';
 
 // Initialize Firebase
-const firebaseConfig = {
-  apiKey: process.env.apiKey,
-  authDomain: process.env.authDomain,
-  projectId: process.env.projectId,
-  storageBucket: process.env.storageBucket,
-  messagingSenderId: process.env.messagingSenderId,
-  appId: process.env.appId,
-  measurementId: process.env.measurementId,
-};
+// const firebaseConfig = {
+//   apiKey: process.env.VITE_API_KEY,
+//   authDomain: process.env.ITE_AUTH_DOMAIN,
+//   projectId: process.env.VITE_PROJECT_ID,
+//   storageBucket: process.env.VITE_STORAGE_BUCKET,
+//   messagingSenderId: process.env.VITE_MESSAGE_SENDER_ID,
+//   appId: process.env.VITE_APP_ID,
+//   measurementId: process.env.VITE_MEASUREMENT_ID,
+// };
 
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
