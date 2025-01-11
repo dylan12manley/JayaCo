@@ -1,0 +1,28 @@
+import './form.css';
+import ColorPicker from '../../components/ColorPicker/ColorPicker';
+import { useSelector, useDispatch } from 'react-redux';
+
+// Background color
+// Text color
+// (maybe not this)Border color + thickness
+// Category page links
+// About us
+// Company logo / homepage link
+// Social media link 1
+// Social media link 2
+
+export default function HeaderForm() {
+  const headerBG = useSelector((state) => state.headerBG.value);
+  const headerTextColor = useSelector((state) => state.headerTextColor.value);
+  return (
+    <main>
+      <h1>Edit the header</h1>
+      <ColorPicker colorFor={'header'} />
+      <div>
+        <span>header background color:</span>
+        <span style={{ background: headerBG }}>{headerBG}</span>
+      </div>
+      {/* <form></form> */}
+    </main>
+  );
+}
