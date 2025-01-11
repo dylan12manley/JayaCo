@@ -1,4 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
+import headerBGReducer from '../components/ColorPicker/headerBGSlice';
+import headerTextColorReducer from '../components/ColorPicker/headerTextColorSlice';
+
 import counterReducer from '../features/counter/counterSlice';
 import bGColorReducer from '../features/colorSelector/bGColorSlice';
 import bG2ColorSlice from '../features/colorSelector/bG2ColorSlice';
@@ -7,6 +10,8 @@ import textColorSlice from '../features/colorSelector/textColorSlice';
 
 export default configureStore({
   reducer: {
+    headerBG: headerBGReducer,
+    headerTextColor: headerTextColorReducer,
     counter: counterReducer,
     bGColor: bGColorReducer,
     bG2Color: bG2ColorSlice,
