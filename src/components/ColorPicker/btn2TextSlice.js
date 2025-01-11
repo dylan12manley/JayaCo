@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 export const btn2TextSlice = createSlice({
   name: 'btn2TextColor',
   initialState: {
-    value: '#ffffff',
+    value: '#000000',
   },
   reducers: {
     selectBtn2TextColor: (state, action) => {
