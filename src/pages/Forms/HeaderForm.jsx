@@ -19,8 +19,7 @@ export default function HeaderForm() {
       <h1>Edit the header</h1>
       <ColorPicker colorFor={'header'} />
       <div>
-        <span>header background color:</span>
-        <span style={{ background: headerBG }}>{headerBG}</span>
+        <span style={{ background: headerBG, color: headerTextColor }}>Example of header text on background</span>
       </div>
       {/* <form></form> */}
     </main>
