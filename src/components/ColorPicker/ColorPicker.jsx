@@ -1,10 +1,20 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import './ColorPicker.css';
 import Sketch from '@uiw/react-color-sketch';
 import { selectHeaderBG } from './headerBGSlice';
 import { selectHeaderTextColor } from './headerTextColorSlice';
 import { selectBG1Color } from './bG1Slice';
 import { selectTextColor1 } from './text1Slice';
+import { selectBG2Color } from './bG2Slice';
+import { selectTextColor2 } from './text2Slice';
+import { selectBG3Color } from './bG3Slice';
+import { selectBtn1BGColor } from './btn1BGSlice';
+import { selectBtn1HoverColor } from './btn1HoverSlice';
+import { selectBtn1TextColor } from './btn1TextSlice';
+import { selectBtn2BGColor } from './btn2BGSlice';
+import { selectBtn2HoverColor } from './btn2HoverSlice';
+import { selectBtn2TextColor } from './btn2TextSlice';
 
 export default function ColorPicker(props) {
   const dispatch = useDispatch();
@@ -13,6 +23,9 @@ export default function ColorPicker(props) {
   const headerTextColor = useSelector((state) => state.headerTextColor.value);
   const bG1 = useSelector((state) => state.bG1.value);
   const textColor1 = useSelector((state) => state.textColor1.value);
+
+  // toDo: use pageColorsArray when to handle default color picker values
+  // maybe combine with colorKey array into object?
   const pageColorsArray = [];
   if (props.colorFor === 'header') pageColorsArray.push(headerBG, headerTextColor);
   if (props.colorFor === 'main-page')
@@ -30,7 +43,7 @@ export default function ColorPicker(props) {
       'background-3'
     );
   //   Hook State Variables
-  const [hex, setHex] = useState(props.colorFor === 'header' ? headerBG : '#fff');
+  const [hex, setHex] = useState(props.colorFor === 'header' ? headerBG : bG1);
   const [colorKey, setColorKey] = useState(props.colorFor === 'header' ? 'header-background' : 'main-background');
 
   const selectOptions = [];
@@ -56,15 +69,20 @@ export default function ColorPicker(props) {
     setColorKey(e.target.value);
   }
 
-  console.log('color key', colorKey);
-
   function handleClickSetColor() {
     if (colorKey === 'header-background') dispatch(selectHeaderBG(hex));
     if (colorKey === 'header-text') dispatch(selectHeaderTextColor(hex));
-    // if (colorKey === 'background') dispatch(selectBGColor(hex));
-    // if (colorKey === 'background2') dispatch(selectBG2Color(hex));
-    // if (colorKey === 'background3') dispatch(selectBG3Color(hex));
-    // if (colorKey === 'text') dispatch(selectTextColor(hex));
+    if (colorKey === 'main-background') dispatch(selectBG1Color(hex));
+    if (colorKey === 'background-2') dispatch(selectBG2Color(hex));
+    if (colorKey === 'background-3') dispatch(selectBG3Color(hex));
+    if (colorKey === 'main-text') dispatch(selectTextColor1(hex));
+    if (colorKey === 'text-2') dispatch(selectTextColor2(hex));
+    if (colorKey === 'main-button-background') dispatch(selectBtn1BGColor(hex));
+    if (colorKey === 'main-button-text') dispatch(selectBtn1TextColor(hex));
+    if (colorKey === 'main-button-hover') dispatch(selectBtn1HoverColor(hex));
+    if (colorKey === 'button-2-background') dispatch(selectBtn2BGColor(hex));
+    if (colorKey === 'button-2-text') dispatch(selectBtn2TextColor(hex));
+    if (colorKey === 'button-2-hover') dispatch(selectBtn2HoverColor(hex));
   }
 
   useEffect(() => {
@@ -89,7 +107,7 @@ export default function ColorPicker(props) {
           </option>
         ))}
       </select>
-      <div>
+      <div className='color-picker-bottom'>
         <Sketch
           color={hex}
           disableAlpha='true'
@@ -98,8 +116,8 @@ export default function ColorPicker(props) {
             setHex(color.hex);
           }}
         />
-        <div>
-          <span style={{ background: hex }}>{hex}</span>
+        <div className='preivew-and-select-color'>
+          <span style={{ background: hex }}>{hex ? hex : 'preview'}</span>
           <button onClick={handleClickSetColor}>Set {colorKey}</button>
         </div>
       </div>
