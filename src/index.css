@@ -12,6 +12,18 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --main-bg-color: #f3f7f0;
+  --secondary-bg-color: #19323c;
+  --third-bg-color: #feeced;
+  --main-text-color: #19323c;
+  --secondary-text-color: #f3f7f0;
+  --header-bg-color: #9be4d8;
+  --header-text-color: #541c12;
+  --main-btn-bg-color: #19323c;
+  --main-btn-text-color: #f3f7f0;
+  --secondary-btn-bg-color: #541c12;
+  --secondary-btn-text-color: #9be4d8;
 }
 
 a {
