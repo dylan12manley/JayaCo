@@ -9,6 +9,7 @@ import Forms from './pages/Forms/Forms';
 
 import HeaderForm from './pages/Forms/HeaderForm';
 import MainForm from './pages/Forms/MainForm';
+import CompanyInfoForm from './pages/Forms/CompanyInfoForm';
 
 import Error from './pages/Error/Error';
 
@@ -38,8 +39,12 @@ export default function App() {
           element={<HeaderForm />}
         />
         <Route
-          path='main-form'
+          path='/main-form'
           element={<MainForm />}
+        />
+        <Route
+          path='/company-info-form'
+          element={<CompanyInfoForm />}
         />
         <Route
           path='*'
