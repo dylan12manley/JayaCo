@@ -1,7 +1,3 @@
-// table: string
-// method: string
-// bodyObj: obj
-
 /**
  * Posts data to the database.
  *
@@ -10,7 +6,7 @@
  * @param {obj} bodyObj The key/value pairs for the data to be posted. Optional
  * @returns {null} null.
  */
-function useFetch(table = 'generalInfo', method = 'POST', bodyObj = {}) {
+function useFetch(table = 'general', method = 'POST', bodyObj = {}) {
   const postData = async () => {
     fetch(`http://localhost:4000/${table}`, {
       method: method,
