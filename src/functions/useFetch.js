@@ -45,4 +45,8 @@ function useFetch(table = 'general', method = 'POST', bodyObj = {}) {
   return;
 }
 
+export const GET = (table) => {
+  return axios.get(`${apiBaseURL}/${table}`);
+};
+
 export default useFetch;
