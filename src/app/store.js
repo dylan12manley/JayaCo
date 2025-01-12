@@ -15,12 +15,6 @@ import btn2BGReducer from '../components/ColorPicker/btn2BGSlice';
 import btn2HoverReducer from '../components/ColorPicker/btn2HoverSlice';
 import btn2TextReducer from '../components/ColorPicker/btn2TextSlice';
 
-import counterReducer from '../features/counter/counterSlice';
-import bGColorReducer from '../features/colorSelector/bGColorSlice';
-import bG2ColorSlice from '../features/colorSelector/bG2ColorSlice';
-import bG3ColorSlice from '../features/colorSelector/bg3ColorSlice';
-import textColorSlice from '../features/colorSelector/textColorSlice';
-
 export default configureStore({
   reducer: {
     headerBG: headerBGReducer,
@@ -36,11 +30,5 @@ export default configureStore({
     btn2BG: btn2BGReducer,
     btn2Hover: btn2HoverReducer,
     btn2TextColor: btn2TextReducer,
-
-    counter: counterReducer,
-    bGColor: bGColorReducer,
-    bG2Color: bG2ColorSlice,
-    bG3Color: bG3ColorSlice,
-    textColor: textColorSlice,
   },
 });

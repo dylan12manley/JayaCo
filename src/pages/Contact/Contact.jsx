@@ -1,8 +1,7 @@
-import { Counter } from '../../features/counter/Counter';
 export default function Contact() {
   return (
     <main>
-      <Counter />
+      <h1>Contact Page</h1>
     </main>
   );
 }
