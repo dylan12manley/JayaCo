@@ -1,5 +1,6 @@
 import './form.css';
 import { useState } from 'react';
+import useFetch from '../../functions/useFetch';
 
 export default function FontsForm() {
   const [mainFont, setMainFont] = useState('serif');
@@ -10,25 +11,11 @@ export default function FontsForm() {
     if (e.target[0]?.value != '') setMainFont(e.target[0].value);
     if (e.target[1]?.value != '') setSecondaryFont(e.target[1]?.value);
 
-    fetch('http://localhost:4000/general', {
-      method: 'POST',
-      body: JSON.stringify({
-        mainFont: e.target[0].value,
-        secondaryFont: e.target[1]?.value,
-      }),
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-      },
-    })
-      .then((response) => {
-        console.log(response);
-        if ((response.stats = 200)) {
-          alert('Fonts have been successfully added to the database.');
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    const bodyObj = {
+      mainFont: e.target[0].value,
+      secondaryFont: e.target[1]?.value,
+    };
+    useFetch('general', 'POST', bodyObj);
   }
 
   return (
