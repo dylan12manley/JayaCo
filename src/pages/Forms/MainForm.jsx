@@ -1,6 +1,7 @@
 import './form.css';
-import ColorPicker from '../../components/ColorPicker/ColorPicker';
 import { useSelector, useDispatch } from 'react-redux';
+import ColorPicker from '../../components/ColorPicker/ColorPicker';
+import FontsForm from './FontsForm';
 
 export default function MainForm() {
   const bG1 = useSelector((state) => state.bG1.value);
@@ -27,7 +28,7 @@ export default function MainForm() {
           <button style={{ background: btn2BG, color: btn2TextColor }}>Button 2</button>
         </div>
       </div>
-      {/* <form></form> */}
+      <FontsForm />
     </main>
   );
 }

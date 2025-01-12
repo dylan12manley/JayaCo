@@ -2,7 +2,8 @@ form {
   padding: 10px;
   border: 2px solid #fcab10;
 
-  h2 {
+  h2,
+  h3 {
     margin: 0;
     text-align: center;
   }
