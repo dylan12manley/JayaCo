@@ -26,8 +26,22 @@ function useFetch(table = 'general', method = 'POST', bodyObj = {}) {
       });
   };
 
-  if (method === 'POST') postData();
+  // const getData = async () => {
+  //   fetch(`http://localhost:4000/${table}`)
+  //     .then((res) => {
+  //       return res.json();
+  //     })
+  //     .then((json) => {
+  //       console.log(json);
+  //       return json;
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // };
 
+  if (method === 'POST') postData();
+  // if (method === 'GET') return getData();
   return;
 }
 

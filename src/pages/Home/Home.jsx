@@ -6,10 +6,10 @@ export default function Home() {
   const [data, setData] = useState([]);
   const [arrLen, setArrLen] = useState(0);
 
-  const bGColor = useSelector((state) => state.bGColor.value);
-  const bG2Color = useSelector((state) => state.bG2Color.value);
-  const bG3Color = useSelector((state) => state.bG3Color.value);
-  const textColor = useSelector((state) => state.textColor.value);
+  const bGColor = useSelector((state) => state.bG1.value);
+  const bG2Color = useSelector((state) => state.bG2.value);
+  const bG3Color = useSelector((state) => state.bG3.value);
+  const textColor = useSelector((state) => state.textColor1.value);
 
   useEffect(() => {
     fetch('http://localhost:4000/homePage')
