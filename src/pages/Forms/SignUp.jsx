@@ -48,7 +48,7 @@ export default function SignUp() {
       <div className='form-input'>
         <label htmlFor='password'>Password:</label>
         <input
-          type='text'
+          type='password'
           id='password'
           name='password'
         ></input>
