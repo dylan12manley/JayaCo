@@ -8,7 +8,6 @@ export default function SignOut() {
     signOut(auth)
       .then(() => {
         alert('sign out successfull');
-        // Sign-out successful.
       })
       .catch((error) => {
         alert('an error happened');

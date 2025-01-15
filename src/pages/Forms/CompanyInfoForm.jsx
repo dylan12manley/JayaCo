@@ -17,7 +17,7 @@ export default function CompanyInfoForm() {
     useFetch('companyInfo', 'POST', bodObj);
   }
   return (
-    <>
+    <main>
       <h2>General Info</h2>
       <form onSubmit={handleSubmitGeneralInfo}>
         <div className='form-input'>
@@ -26,6 +26,8 @@ export default function CompanyInfoForm() {
             type='text'
             id='companyName'
             name='companyName'
+            placeholder='Dyl-n-Will Co'
+            required
           ></input>
         </div>
         <div className='form-input'>
@@ -34,6 +36,7 @@ export default function CompanyInfoForm() {
             type='text'
             id='address'
             name='address'
+            placeholder='123 NE 4th Street'
           ></input>
         </div>
         <div className='form-input'>
@@ -42,6 +45,7 @@ export default function CompanyInfoForm() {
             type='text'
             id='city'
             name='city'
+            placeholder='Portland'
           ></input>
         </div>
         <div className='form-input'>
@@ -50,6 +54,7 @@ export default function CompanyInfoForm() {
             type='text'
             id='state'
             name='state'
+            placeholder='Oregon'
           ></input>
         </div>
         <div className='form-input'>
@@ -58,6 +63,7 @@ export default function CompanyInfoForm() {
             type='text'
             id='zip'
             name='zip'
+            placeholder='97212'
           ></input>
         </div>
         <div className='form-input'>
@@ -66,6 +72,8 @@ export default function CompanyInfoForm() {
             type='text'
             id='phoneNumber'
             name='phoneNumber'
+            pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}'
+            placeholder='123-456-7890'
           ></input>
         </div>
         <div className='form-input'>
@@ -74,6 +82,7 @@ export default function CompanyInfoForm() {
             type='text'
             id='email'
             name='email'
+            placeholder='name@site.com'
           ></input>
         </div>
         <div className='form-input'>
@@ -82,12 +91,13 @@ export default function CompanyInfoForm() {
             type='text'
             id='hours'
             name='hours'
+            placeholder='Mon-Fri 8am-6pm'
           ></input>
         </div>
         <div className='form-input'>
           <button type='submit'>Send</button>
         </div>
       </form>
-    </>
+    </main>
   );
 }
