@@ -20,9 +20,21 @@ export default function MainForm() {
       <h1>Edit the main page</h1>
       <ColorPicker colorFor={'main-page'} />
       <div className='preview-colors'>
-        <span style={{ background: bG1, color: textColor1 }}>Example of main text on main background</span>
-        <span style={{ background: bG2, color: textColor2 }}>Example of text 2 on background 2</span>
-        <span style={{ background: bG3, color: textColor1 }}>Example of main text on background 3</span>
+        <span style={{ background: bG1, color: textColor1 }}>
+          Main text: {textColor1}
+          <br />
+          Main background: {bG1}
+        </span>
+        <span style={{ background: bG2, color: textColor2 }}>
+          Text 2: {textColor2}
+          <br />
+          Background 2: {bG2}
+        </span>
+        <span style={{ background: bG3, color: textColor1 }}>
+          Main text: {textColor1}
+          <br />
+          Background 3: {bG3}
+        </span>
         <div className='btns'>
           <button style={{ background: btn1BG, color: btn1TextColor }}>Button 1</button>
           <button style={{ background: btn2BG, color: btn2TextColor }}>Button 2</button>
