@@ -4,6 +4,7 @@
   left: 0;
   background-color: #c0e6de;
   width: 100%;
+  z-index: 2;
 
   ul {
     display: flex;
