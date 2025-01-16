@@ -82,6 +82,9 @@ export default function CategoryForm() {
             </fieldset>
           )}
         </fieldset>
+        <div className='form-input'>
+          <button type='submit'>Submit Category</button>
+        </div>
       </form>
     </>
   );
