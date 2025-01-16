@@ -53,6 +53,7 @@ export default function mainData() {
     categoryArticles: [
       'id',
       'articleTitle',
+      'articleStyle',
       'articleImgUrl',
       'articleImgUrlTwo',
       'articleImgUrlThree',
