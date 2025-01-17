@@ -1,7 +1,16 @@
+import useFetch from '../../functions/useFetch';
+
 export default function ReviewForm() {
   function handleSubmitReview(e) {
     e.preventDefault();
-    console.log(e);
+    const bodyObj = {
+      reviewTitle: e.target[0].value,
+      reviewScore: e.target[1].value,
+      reviewText: e.target[2].value,
+      reviewerName: e.target[3].value,
+      reviewDate: e.target[4].value,
+    };
+    useFetch('reviews', 'POST', bodyObj);
   }
 
   return (
