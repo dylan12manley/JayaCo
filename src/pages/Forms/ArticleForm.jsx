@@ -5,6 +5,7 @@ export default function ArticleForm() {
   const [addEvenMore, setAddEvenMore] = useState(false);
 
   function handleSubmitArticleForm(e) {
+    e.preventDefault();
     console.log(e);
   }
 
@@ -18,13 +19,14 @@ export default function ArticleForm() {
         onSubmit={handleSubmitArticleForm}
         name='article-form'
       >
-        <h2>Article Form</h2>
+        <h2>Category Article Form</h2>
         <div className='form-input'>
           <label htmlFor='articleTitle'>Article Title:</label>
           <input
             type='text'
             id='articleTitle'
             name='articleTitle'
+            placeholder='Name of the project'
           />
         </div>
         <div className='form-input'>
@@ -33,6 +35,7 @@ export default function ArticleForm() {
             type='text'
             id='artImg1Url'
             name='artImg1Url'
+            placeholder='pitcure-site.com/something'
           />
         </div>
         <div className='form-input'>
@@ -41,6 +44,7 @@ export default function ArticleForm() {
             type='text'
             id='artSubHeader1'
             name='artSubHeader1'
+            placeholder='The project was done here on this date.'
           />
         </div>
         <div className='form-input'>
@@ -49,6 +53,7 @@ export default function ArticleForm() {
             type='text-field'
             id='artTextBody1'
             name='artTextBody1'
+            placeholder='Enter description of the project.'
           />
         </div>
         <fieldset>
@@ -78,14 +83,7 @@ export default function ArticleForm() {
                 type='text'
                 id='artImg2Url'
                 name='artImg2Url'
-              />
-            </div>
-            <div className='form-input'>
-              <label htmlFor='artSubHeader2'>Article Sub Header 2:</label>
-              <input
-                type='text'
-                id='artSubHeader2'
-                name='artSubHeader2'
+                placeholder='pitcure-site.com/something-2'
               />
             </div>
             <div className='form-input'>
@@ -94,6 +92,7 @@ export default function ArticleForm() {
                 type='text-field'
                 id='artTextBody2'
                 name='artTextBody2'
+                placeholder='Enter the second part of the description of the project.'
               />
             </div>
             <fieldset>
@@ -123,14 +122,7 @@ export default function ArticleForm() {
                     type='text'
                     id='artImg3Url'
                     name='artImg3Url'
-                  />
-                </div>
-                <div className='form-input'>
-                  <label htmlFor='artSubHeader3'>Article Sub Header 3:</label>
-                  <input
-                    type='text'
-                    id='artSubHeader3'
-                    name='artSubHeader3'
+                    placeholder='pitcure-site.com/something-3'
                   />
                 </div>
                 <div className='form-input'>
@@ -139,6 +131,7 @@ export default function ArticleForm() {
                     type='text-field'
                     id='artTextBody3'
                     name='artTextBody3'
+                    placeholder='Enter the third part of the description of the project.'
                   />
                 </div>
               </>

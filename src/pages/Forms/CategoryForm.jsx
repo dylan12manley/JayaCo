@@ -21,6 +21,7 @@ export default function CategoryForm() {
             type='text'
             id='catTitle'
             name='catTitle'
+            placeholder='Category A'
           />
         </div>
         <div className='form-input'>
@@ -29,6 +30,7 @@ export default function CategoryForm() {
             type='text'
             id='catImgUrl'
             name='catImgUrl'
+            placeholder='picture-site.com/category'
           />
         </div>
         <div className='form-input'>
@@ -37,6 +39,7 @@ export default function CategoryForm() {
             type='text'
             id='catSubHeader'
             name='catSubHeader'
+            placeholder='A brief description of the category'
           />
         </div>
         <div className='form-input'>
@@ -45,6 +48,7 @@ export default function CategoryForm() {
             type='text-field'
             id='catTextBody'
             name='catTextBody'
+            placeholder='A longer description of the category'
           />
         </div>
         <fieldset>

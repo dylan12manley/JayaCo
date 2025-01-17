@@ -62,6 +62,7 @@ export default function HomeForm() {
           type='text'
           id='siteName'
           name='siteName'
+          placeholder='Dyl-n-Will Co.'
         />
       </div>
       <div className='form-input'>
@@ -70,6 +71,7 @@ export default function HomeForm() {
           type='text'
           id='siteH2'
           name='siteH2'
+          placeholder='A company that does this and that.'
         />
       </div>
       <div className='form-input'>
@@ -78,6 +80,7 @@ export default function HomeForm() {
           type='text'
           id='siteH3'
           name='siteH3'
+          placeholder='Est. 2025 - Portland Oregon'
         />
       </div>
       <div className='form-input'>
@@ -86,6 +89,7 @@ export default function HomeForm() {
           type='text'
           id='mainImg'
           name='mainImg'
+          placeholder='picture-site.com'
         />
       </div>
       <fieldset>
@@ -96,7 +100,7 @@ export default function HomeForm() {
             id='overlay'
             name='img-type'
             value='overlay'
-            checked
+            defaultChecked
           />
           <label htmlFor='overlay'>Text Overlay</label>
         </div>
@@ -116,6 +120,7 @@ export default function HomeForm() {
           type='text-field'
           id='home-text'
           name='home-text'
+          placeholder='Describe your company or tell a quick story.'
         />
       </div>
       <div className='form-input'>
@@ -124,6 +129,7 @@ export default function HomeForm() {
           type='text'
           id='hBtnText'
           name='hBtnText'
+          placeholder='Contact Us'
         />
       </div>
       <div className='form-input'>
@@ -133,7 +139,7 @@ export default function HomeForm() {
           id='home-btn-funtion-select'
         >
           <option value='contact'>contact us page redirect</option>
-          <option value='contact'>about us page redirect</option>
+          <option value='about'>about us page redirect</option>
         </select>
       </div>
       <fieldset>
@@ -207,7 +213,7 @@ export default function HomeForm() {
         </fieldset>
       )}
       <div className='form-input'>
-        <button type='submit'>Send</button>
+        <button type='submit'>Submit Home Page Form</button>
       </div>
       <div className='results-preview'>
         <span>New Site Name: {siteName}</span>
