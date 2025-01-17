@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import useFetch from '../../functions/useFetch';
 
 export default function ArticleForm() {
   const [addMore, setAddMore] = useState(false);
@@ -6,12 +7,26 @@ export default function ArticleForm() {
 
   function handleSubmitArticleForm(e) {
     e.preventDefault();
-    console.log(e);
+    let indexAdjustment = 0;
+    if (!addEvenMore && addMore) indexAdjustment = -2;
+    if (!addMore) indexAdjustment = -7;
+    const bodyObj = {
+      articleTitle: e.target[0].value,
+      articleImgUrlOne: e.target[1].value,
+      articleTextOne: e.target[2].value,
+      articleImgUrlTwo: addMore ? e.target[6]?.value : null,
+      articleTextTwo: addMore ? e.target[7]?.value : null,
+      articleImgUrlThree: addMore && addEvenMore ? e.target[11 + indexAdjustment]?.value : null,
+      articleTextThree: addMore && addEvenMore ? e.target[12 + indexAdjustment]?.value : null,
+      articleStyle: e.target[13 + indexAdjustment]?.value,
+    };
+    useFetch('categoryArticles', 'POST', bodyObj);
   }
 
   function handleClickAddMore(e) {
     const yesNo = e.target.value === 'yes' ? true : false;
-    e.target.name === 'addMore' ? setAddMore(yesNo) : setAddEvenMore(yesNo);
+    if (e.target.name === 'addMore') setAddMore(yesNo);
+    if (e.target.name === 'addEvenMore') setAddEvenMore(yesNo);
   }
   return (
     <>
@@ -36,15 +51,6 @@ export default function ArticleForm() {
             id='artImg1Url'
             name='artImg1Url'
             placeholder='pitcure-site.com/something'
-          />
-        </div>
-        <div className='form-input'>
-          <label htmlFor='artSubHeader1'>Article Sub Header 1:</label>
-          <input
-            type='text'
-            id='artSubHeader1'
-            name='artSubHeader1'
-            placeholder='The project was done here on this date.'
           />
         </div>
         <div className='form-input'>
