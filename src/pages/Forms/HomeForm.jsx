@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './form.css';
+import useFetch from '../../functions/useFetch';
 
 export default function HomeForm() {
   const [hasReviews, setHasReviews] = useState(false);
@@ -7,10 +8,10 @@ export default function HomeForm() {
 
   const arrayPlaceholder = ['option1', 'option2', 'option3', 'option4'];
 
-  const [siteName, setSiteName] = useState('');
-  const [siteH2, setSiteH2] = useState('');
-  const [siteH3, setSiteH3] = useState('');
-  const [mainImg, setMainImg] = useState('');
+  const [homeTitle, setHomeTitle] = useState('');
+  const [homeH2, setSiteH2] = useState('');
+  const [homeH3, setSiteH3] = useState('');
+  const [homeImgUrl, setMainImg] = useState('');
 
   function handleClickHasReviews(e) {
     e.target.value === 'yes' ? setHasReviews(true) : setHasReviews(false);
@@ -22,32 +23,54 @@ export default function HomeForm() {
 
   function handleSubmitHome(e) {
     e.preventDefault();
-    if (e.target[0]?.value != '') setSiteName(e.target[0].value);
+    if (e.target[0]?.value != '') setHomeTitle(e.target[0].value);
     if (e.target[1]?.value != '') setSiteH2(e.target[1]?.value);
     if (e.target[2]?.value != '') setSiteH3(e.target[2]?.value);
     if (e.target[3]?.value != '') setMainImg(e.target[3]?.value);
-
-    fetch('http://localhost:4000/homePage', {
-      method: 'POST',
-      body: JSON.stringify({
-        siteName: e.target[0].value,
-        homePageH2: e.target[1]?.value,
-        homePageH3: e.target[2]?.value,
-        mainImg: e.target[3]?.value,
-      }),
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-      },
-    })
-      .then((response) => {
-        console.log(response);
-        if ((response.stats = 200)) {
-          alert('Data has been successfully added to the database.');
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    const homeImgType = Array.from(document.querySelectorAll('input[name="img-type"]')).filter((elm) => elm.checked === true)[0]
+      .value;
+    const homeBtnText = document.querySelector('input[name="hBtnText"]').value;
+    const homeBtnFunction = Array.from(document.querySelectorAll('select[name="home-btn-function"]')[0]).filter(
+      (elm) => elm.selected === true
+    )[0].value;
+    const hasReviews =
+      Array.from(document.querySelectorAll('input[name="has-reviews"]')).filter((elm) => elm.checked === true)[0].value === 'yes'
+        ? 0
+        : 1;
+    const reviews = [];
+    Array.from(document.querySelectorAll('.reviews-option'))
+      .filter((elm) => elm.checked)
+      .forEach((review) => reviews.push(review.value));
+    const hasCategories =
+      Array.from(document.querySelectorAll('input[name="has-categories"]')).filter((elm) => elm.checked === true)[0].value ===
+      'yes'
+        ? 0
+        : 1;
+    const categories = [];
+    Array.from(document.querySelectorAll('.categories-options'))
+      .filter((elm) => elm.checked)
+      .forEach((review) => categories.push(review.value));
+    const hasContactForm =
+      Array.from(document.querySelectorAll('input[name="has-contact-us"]')).filter((elm) => elm.checked === true)[0].value ===
+      'yes'
+        ? 0
+        : 1;
+    const bodyObj = {
+      homeTitle: e.target[0].value,
+      homeH2: e.target[1]?.value,
+      homeH3: e.target[2]?.value,
+      homeImgUrl: e.target[3]?.value,
+      homeImgType: homeImgType,
+      homeText: e.target[7]?.value,
+      homeBtnText: homeBtnText,
+      homeBtnFunction: homeBtnFunction,
+      hasReviews: hasReviews,
+      selectedReviews: reviews.toString(),
+      hasCategories: hasCategories,
+      selectedCategories: categories.toString(),
+      hasContactForm: hasContactForm,
+    };
+    useFetch('homePage', 'POST', bodyObj);
   }
 
   return (
@@ -57,38 +80,38 @@ export default function HomeForm() {
     >
       <h2>Home Page Form</h2>
       <div className='form-input'>
-        <label htmlFor='siteName'>Site Name:</label>
+        <label htmlFor='homeTitle'>Site Name:</label>
         <input
           type='text'
-          id='siteName'
-          name='siteName'
+          id='homeTitle'
+          name='homeTitle'
           placeholder='Dyl-n-Will Co.'
         />
       </div>
       <div className='form-input'>
-        <label htmlFor='siteH2'>Site Header 2:</label>
+        <label htmlFor='homeH2'>Site Header 2:</label>
         <input
           type='text'
-          id='siteH2'
-          name='siteH2'
+          id='homeH2'
+          name='homeH2'
           placeholder='A company that does this and that.'
         />
       </div>
       <div className='form-input'>
-        <label htmlFor='siteH3'>Site Header 3:</label>
+        <label htmlFor='homeH3'>Site Header 3:</label>
         <input
           type='text'
-          id='siteH3'
-          name='siteH3'
+          id='homeH3'
+          name='homeH3'
           placeholder='Est. 2025 - Portland Oregon'
         />
       </div>
       <div className='form-input'>
-        <label htmlFor='mainImg'>Main image URL:</label>
+        <label htmlFor='homeImgUrl'>Main image URL:</label>
         <input
           type='text'
-          id='mainImg'
-          name='mainImg'
+          id='homeImgUrl'
+          name='homeImgUrl'
           placeholder='picture-site.com'
         />
       </div>
@@ -100,7 +123,6 @@ export default function HomeForm() {
             id='overlay'
             name='img-type'
             value='overlay'
-            defaultChecked
           />
           <label htmlFor='overlay'>Text Overlay</label>
         </div>
@@ -170,6 +192,7 @@ export default function HomeForm() {
                   <input
                     type='checkbox'
                     value={option}
+                    className='reviews-option'
                   />
                 </span>
               );
@@ -206,23 +229,41 @@ export default function HomeForm() {
                 <input
                   type='checkbox'
                   value={option}
+                  className='categories-options'
                 />
               </span>
             );
           })}
         </fieldset>
       )}
+      <fieldset>
+        <legend>Display Contact Us form on home page?</legend>
+        <input
+          type='radio'
+          id='yes-contact-us'
+          name='has-contact-us'
+          value='yes'
+        />
+        <label htmlFor='yes-contact-us'>Yes</label>
+        <input
+          type='radio'
+          id='no-contact-us'
+          name='has-contact-us'
+          value='no'
+        />
+        <label htmlFor='no-contact-us'>No</label>
+      </fieldset>
       <div className='form-input'>
         <button type='submit'>Submit Home Page Form</button>
       </div>
       <div className='results-preview'>
-        <span>New Site Name: {siteName}</span>
-        <span>New Home Page H2: {siteH2}</span>
-        <span>New Home Page H3: {siteH3}</span>
+        <span>New Site Name: {homeTitle}</span>
+        <span>New Home Page H2: {homeH2}</span>
+        <span>New Home Page H3: {homeH3}</span>
         <span>
           New Main Image:
           <img
-            src={mainImg}
+            src={homeImgUrl}
             alt='main img'
           />
         </span>
