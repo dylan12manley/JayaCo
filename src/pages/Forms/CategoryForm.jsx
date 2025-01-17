@@ -1,9 +1,24 @@
 import { useState, useEffect } from 'react';
+import useFetch from '../../functions/useFetch';
+
 export default function CategoryForm() {
   const [hasArticles, setHasArticles] = useState(false);
   function handleSubmitCategory(e) {
-    console.log(e);
+    e.preventDefault();
+    const articles = [];
+    Array.from(document.querySelectorAll('.article-option'))
+      .filter((elm) => elm.checked)
+      .forEach((article) => articles.push(article.value));
+    const bodyObj = {
+      catTitle: e.target[0].value,
+      catImgUrl: e.target[1].value,
+      catSubHeader: e.target[2].value,
+      catText: e.target[3].value,
+      articles: articles.toString(),
+    };
+    useFetch('categories', 'POST', bodyObj);
   }
+
   function handleClickhasArticles(e) {
     e.target.value === 'yes' ? setHasArticles(true) : setHasArticles(false);
   }
@@ -56,7 +71,7 @@ export default function CategoryForm() {
           <input
             type='radio'
             id='hasArticles'
-            name='hasArticles'
+            name='has-articles'
             value='yes'
             onClick={handleClickhasArticles}
           />
@@ -64,7 +79,7 @@ export default function CategoryForm() {
           <input
             type='radio'
             id='noArticles'
-            name='noArticles'
+            name='has-articles'
             value='no'
             onClick={handleClickhasArticles}
           />
@@ -72,13 +87,14 @@ export default function CategoryForm() {
           {hasArticles && (
             <fieldset>
               <legend>Select articles to include:</legend>
-              {arrayPlaceholder.map((option, i) => {
+              {arrayPlaceholder.map((article, i) => {
                 return (
                   <span key={i}>
-                    <label htmlFor='option'>{option}</label>
+                    <label htmlFor='article'>{article}</label>
                     <input
                       type='checkbox'
-                      value={option}
+                      value={article}
+                      className='article-option'
                     />
                   </span>
                 );
