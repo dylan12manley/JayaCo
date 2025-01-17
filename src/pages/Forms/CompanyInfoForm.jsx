@@ -15,14 +15,13 @@ export default function CompanyInfoForm() {
       phoneNumber: e.target[5]?.value,
       email: e.target[6]?.value,
       hours: e.target[7]?.value,
-      facebook: socialCheckboxes[0].checked === true ? socialUrls[0].value : null,
-      instagram: socialCheckboxes[1].checked === true ? socialUrls[1].value : null,
-      twitter: socialCheckboxes[2].checked === true ? socialUrls[2].value : null,
-      youtube: socialCheckboxes[3].checked === true ? socialUrls[3].value : null,
-      linkedin: socialCheckboxes[4].checked === true ? socialUrls[4].value : null,
+      facebookUrl: socialCheckboxes[0].checked === true ? socialUrls[0].value : null,
+      instagramUrl: socialCheckboxes[1].checked === true ? socialUrls[1].value : null,
+      twitterUrl: socialCheckboxes[2].checked === true ? socialUrls[2].value : null,
+      youtubeUrl: socialCheckboxes[3].checked === true ? socialUrls[3].value : null,
+      linkedinUrl: socialCheckboxes[4].checked === true ? socialUrls[4].value : null,
     };
-    console.log(bodObj);
-    // useFetch('companyInfo', 'POST', bodObj);
+    useFetch('companyInfo', 'POST', bodObj);
   }
   const socialMediaArr = ['facebook', 'instagram', 'twitter', 'youtube', 'linkedin'];
   return (
