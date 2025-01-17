@@ -48,17 +48,18 @@ export default function mainData() {
       'hasContactForm',
     ],
     reviews: ['id', 'reviewTitle', 'reviewScore', 'reviewText', 'reviewerName', 'reviewDate'],
-    categoryPages: ['id', 'catTitle', 'catImgUrl', 'catSubHeader', 'catText', 'articleAmount', 'articleArray'],
+    categories: ['id', 'catTitle', 'catImgUrl', 'catSubHeader', 'catText'],
     categoryArticles: [
       'id',
       'articleTitle',
       'articleStyle',
-      'articleImgUrl',
+      'articleImgUrlOne',
       'articleImgUrlTwo',
       'articleImgUrlThree',
-      'articleText',
-      'articleImgTextTwo',
-      'articleImgTextThree',
+      'articleText1',
+      'articleTextTwo',
+      'articleTextThree',
+      'catId',
     ],
     contactForm: [
       'has phone',
@@ -75,7 +76,7 @@ export default function mainData() {
       'checkboxOptionFour',
       'checkboxOptionFive',
     ],
-    header: ['companyLogoUrl', 'hasSocialLinks', 'hasContactUs', 'hasAboutUs', 'styleType'],
-    footer: ['hasSocialLinks', 'styleType'],
+    header: ['smallLogoUrl', 'hasSocial', 'hasContact', 'hasAbout', 'styleType'],
+    footer: ['hasSocial', 'styleType'],
   };
 }
