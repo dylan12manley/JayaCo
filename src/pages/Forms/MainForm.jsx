@@ -15,6 +15,10 @@ export default function MainForm() {
   const btn2BG = useSelector((state) => state.btn2BG.value);
   const btn2Hover = useSelector((state) => state.btn2Hover.value);
   const btn2TextColor = useSelector((state) => state.btn2TextColor.value);
+
+  function handleClickGeneralStyling(e) {
+    e.preventDefault();
+  }
   return (
     <main>
       <h1>Edit the main page</h1>
@@ -41,6 +45,7 @@ export default function MainForm() {
         </div>
       </div>
       <FontsForm />
+      <button onClick={handleClickGeneralStyling}>Submit general styling</button>
     </main>
   );
 }

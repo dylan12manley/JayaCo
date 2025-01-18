@@ -15,7 +15,7 @@ export default function FontsForm() {
       mainFont: e.target[0].value,
       secondaryFont: e.target[1]?.value,
     };
-    useFetch('general', 'POST', bodyObj);
+    // useFetch('general', 'POST', bodyObj);
   }
 
   return (
