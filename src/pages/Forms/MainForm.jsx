@@ -41,6 +41,7 @@ export default function MainForm() {
       btn2Hover: btn2Hover,
     };
     useFetch('general', 'POST', bodyObj);
+    window.location.href = 'http://localhost:5173/header-form';
   }
   return (
     <main>

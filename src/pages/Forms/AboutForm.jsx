@@ -13,7 +13,7 @@ export default function AboutForm() {
   }
 
   return (
-    <from onSubmit={handleSubmitAbout}>
+    <form onSubmit={handleSubmitAbout}>
       <h2>About Page Form</h2>
       <div className='form-input'>
         <label htmlFor='aboutMainTitle'>About main title:</label>
@@ -162,6 +162,6 @@ export default function AboutForm() {
       <div className='form-input'>
         <button type='submit'>Submit About Form</button>
       </div>
-    </from>
+    </form>
   );
 }

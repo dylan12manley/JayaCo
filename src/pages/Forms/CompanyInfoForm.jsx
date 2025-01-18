@@ -22,6 +22,7 @@ export default function CompanyInfoForm() {
       linkedinUrl: socialCheckboxes[4].checked === true ? socialUrls[4].value : null,
     };
     useFetch('companyInfo', 'POST', bodObj);
+    window.location.href = 'http://localhost:5173/main-form';
   }
   const socialMediaArr = ['facebook', 'instagram', 'twitter', 'youtube', 'linkedin'];
   return (
