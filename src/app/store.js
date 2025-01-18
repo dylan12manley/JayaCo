@@ -14,6 +14,8 @@ import btn1TextReducer from '../components/ColorPicker/btn1TextSlice';
 import btn2BGReducer from '../components/ColorPicker/btn2BGSlice';
 import btn2HoverReducer from '../components/ColorPicker/btn2HoverSlice';
 import btn2TextReducer from '../components/ColorPicker/btn2TextSlice';
+import mainFontReducer from '../assets/reducers/mainFontSlice';
+import secondaryFontReducer from '../assets/reducers/secondaryFontSlice';
 
 export default configureStore({
   reducer: {
@@ -30,5 +32,7 @@ export default configureStore({
     btn2BG: btn2BGReducer,
     btn2Hover: btn2HoverReducer,
     btn2TextColor: btn2TextReducer,
+    mainFont: mainFontReducer,
+    secondaryFont: secondaryFontReducer,
   },
 });
