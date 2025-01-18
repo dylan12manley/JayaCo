@@ -46,24 +46,21 @@ export default function ColorPicker(props) {
   const [hex, setHex] = useState(props.colorFor === 'header' ? headerBG : bG1);
   const [colorKey, setColorKey] = useState(props.colorFor === 'header' ? 'header-background' : 'main-background');
 
-  const selectOptions = [];
-  if (props.colorFor === 'header') {
-    selectOptions.push('header-background', 'header-text');
-  } else if (props.colorFor === 'main-page') {
-    selectOptions.push(
-      'main-background',
-      'main-text',
-      'main-button-background',
-      'main-button-text',
-      'main-button-hover',
-      'background-2',
-      'text-2',
-      'button-2-background',
-      'button-2-text',
-      'button-2-hover',
-      'background-3'
-    );
-  }
+  const selectOptions = [
+    'main-background',
+    'main-text',
+    'main-button-background',
+    'main-button-text',
+    'main-button-hover',
+    'background-2',
+    'text-2',
+    'button-2-background',
+    'button-2-text',
+    'button-2-hover',
+    'background-3',
+    'header-background',
+    'header-text',
+  ];
 
   function handleSelectColorKey(e) {
     setColorKey(e.target.value);

@@ -1,5 +1,5 @@
 import './form.css';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import ColorPicker from '../../components/ColorPicker/ColorPicker';
 import FontsForm from './FontsForm';
 import useFetch from '../../functions/useFetch';
@@ -40,7 +40,6 @@ export default function MainForm() {
       btn1Hover: btn1Hover,
       btn2Hover: btn2Hover,
     };
-    console.log(bodyObj);
     useFetch('general', 'POST', bodyObj);
   }
   return (
@@ -64,8 +63,20 @@ export default function MainForm() {
           Background 3: {bg3}
         </span>
         <div className='btns'>
-          <button style={{ background: btn1BG, color: btn1TextColor }}>Button 1</button>
-          <button style={{ background: btn2BG, color: btn2TextColor }}>Button 2</button>
+          <button style={{ background: btn1BG, color: btn1TextColor }}>
+            Button 1 text: {btn1TextColor}
+            <br /> background: {btn1BG}
+          </button>
+          <button style={{ background: btn2BG, color: btn2TextColor }}>
+            Button 2 text: {btn2TextColor} <br /> background: {btn2BG}
+          </button>
+        </div>
+        <div
+          className='header-preview'
+          style={{ color: headerTextColor, background: headerBg }}
+        >
+          header/footer text color: {headerTextColor}
+          <br /> header/footer background color: {headerBg}
         </div>
       </div>
       <FontsForm />
