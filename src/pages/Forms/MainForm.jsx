@@ -2,42 +2,66 @@ import './form.css';
 import { useSelector, useDispatch } from 'react-redux';
 import ColorPicker from '../../components/ColorPicker/ColorPicker';
 import FontsForm from './FontsForm';
+import useFetch from '../../functions/useFetch';
 
 export default function MainForm() {
-  const bG1 = useSelector((state) => state.bG1.value);
-  const bG2 = useSelector((state) => state.bG2.value);
-  const bG3 = useSelector((state) => state.bG3.value);
+  const bg1 = useSelector((state) => state.bG1.value);
+  const bg2 = useSelector((state) => state.bG2.value);
+  const bg3 = useSelector((state) => state.bG3.value);
+  const headerBg = useSelector((state) => state.headerBG.value);
   const textColor1 = useSelector((state) => state.textColor1.value);
   const textColor2 = useSelector((state) => state.textColor2.value);
+  const headerTextColor = useSelector((state) => state.headerTextColor.value);
   const btn1BG = useSelector((state) => state.btn1BG.value);
   const btn1Hover = useSelector((state) => state.btn1Hover.value);
   const btn1TextColor = useSelector((state) => state.btn1TextColor.value);
   const btn2BG = useSelector((state) => state.btn2BG.value);
   const btn2Hover = useSelector((state) => state.btn2Hover.value);
   const btn2TextColor = useSelector((state) => state.btn2TextColor.value);
+  const mainFont = useSelector((state) => state.mainFont.value);
+  const secondaryFont = useSelector((state) => state.secondaryFont.value);
 
   function handleClickGeneralStyling(e) {
     e.preventDefault();
+    const bodyObj = {
+      mainFont: mainFont,
+      secondaryFont: secondaryFont,
+      bg1: bg1,
+      bg2: bg2,
+      bg3: bg3,
+      textColor1: textColor1,
+      textColor2: textColor2,
+      headerBg: headerBg,
+      headerTextColor: headerTextColor,
+      btn1Bg: btn1BG,
+      btn2Bg: btn2BG,
+      btn1TextColor: btn1TextColor,
+      btn2TextColor: btn2TextColor,
+      btn1Hover: btn1Hover,
+      btn2Hover: btn2Hover,
+    };
+    console.log(bodyObj);
+    useFetch('general', 'POST', bodyObj);
   }
   return (
     <main>
       <h1>Edit the main page</h1>
       <ColorPicker colorFor={'main-page'} />
       <div className='preview-colors'>
-        <span style={{ background: bG1, color: textColor1 }}>
+        <span style={{ background: bg1, color: textColor1 }}>
           Main text: {textColor1}
           <br />
-          Main background: {bG1}
+          Main background: {bg1}
         </span>
-        <span style={{ background: bG2, color: textColor2 }}>
+        <span style={{ background: bg2, color: textColor2 }}>
           Text 2: {textColor2}
           <br />
-          Background 2: {bG2}
+          Background 2: {bg2}
         </span>
-        <span style={{ background: bG3, color: textColor1 }}>
+        <span style={{ background: bg3, color: textColor1 }}>
           Main text: {textColor1}
           <br />
-          Background 3: {bG3}
+          Background 3: {bg3}
         </span>
         <div className='btns'>
           <button style={{ background: btn1BG, color: btn1TextColor }}>Button 1</button>
