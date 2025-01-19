@@ -1,30 +1,22 @@
 import './form.css';
 import useFetch from '../../functions/useFetch';
+import getChecked from '../../functions/getChecked';
+import getSelectedValue from '../../functions/getSelectedValue';
 
 export default function HeaderForm() {
   const arrayPlaceholder = ['elm1', 'elm2', 'elm3', 'elm4', 'elm5'];
 
   function handleSubmitFooterHeader(e) {
     e.preventDefault();
-    const hElmsArr = [];
-    Array.from(document.querySelectorAll('.header-element'))
-      .filter((elm) => elm.checked)
-      .forEach((elm) => hElmsArr.push(elm.value));
-    const headerStyle = Array.from(document.querySelectorAll('select[name="header-style"]')[0]).filter(
-      (elm) => elm.selected === true
-    )[0].value;
-    const fElmsArr = [];
-    Array.from(document.querySelectorAll('.footer-element'))
-      .filter((elm) => elm.checked)
-      .forEach((elm) => fElmsArr.push(elm.value));
-    const footerStyle = Array.from(document.querySelectorAll('select[name="footer-style"]')[0]).filter(
-      (elm) => elm.selected === true
-    )[0].value;
+    const headerElms = getChecked('.header-element');
+    const headerStyle = getSelectedValue('select[name="header-style"]');
+    const footerElms = getChecked('.footer-element');
+    const footerStyle = getSelectedValue('select[name="footer-style"]');
     const bodyObj = {
       smallLogoUrl: e.target[0].value,
-      headerElms: hElmsArr.toString(),
-      headerStyle: parseInt(headerStyle),
-      footerElms: fElmsArr.toString(),
+      headerElms: headerElms,
+      headerStyle: headerStyle,
+      footerElms: footerElms,
       footerStyle: footerStyle,
     };
     useFetch('headerFooter', 'POST', bodyObj);

@@ -1,20 +1,18 @@
 import { useState, useEffect } from 'react';
 import useFetch from '../../functions/useFetch';
+import getChecked from '../../functions/getChecked';
 
 export default function CategoryForm() {
   const [hasArticles, setHasArticles] = useState(false);
   function handleSubmitCategory(e) {
     e.preventDefault();
-    const articles = [];
-    Array.from(document.querySelectorAll('.article-option'))
-      .filter((elm) => elm.checked)
-      .forEach((article) => articles.push(article.value));
+    const articles = getChecked('.article-option');
     const bodyObj = {
       catTitle: e.target[0].value,
       catImgUrl: e.target[1].value,
       catSubHeader: e.target[2].value,
       catText: e.target[3].value,
-      articles: articles.toString(),
+      articles: articles,
     };
     useFetch('categories', 'POST', bodyObj);
   }

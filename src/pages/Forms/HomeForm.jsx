@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './form.css';
 import useFetch from '../../functions/useFetch';
+import getSelectedValue from '../../functions/getSelectedValue';
+import getYesNo from '../../functions/getYesNo';
+import getChecked from '../../functions/getChecked';
 
 export default function HomeForm() {
   const [hasReviews, setHasReviews] = useState(false);
@@ -28,46 +31,27 @@ export default function HomeForm() {
     if (e.target[2]?.value != '') setSiteH3(e.target[2]?.value);
     if (e.target[3]?.value != '') setMainImg(e.target[3]?.value);
     const homeImgType = Array.from(document.querySelectorAll('input[name="img-type"]')).filter((elm) => elm.checked === true)[0]
-      .value;
+      ?.value;
     const homeBtnText = document.querySelector('input[name="hBtnText"]').value;
-    const homeBtnFunction = Array.from(document.querySelectorAll('select[name="home-btn-function"]')[0]).filter(
-      (elm) => elm.selected === true
-    )[0].value;
-    const hasReviews =
-      Array.from(document.querySelectorAll('input[name="has-reviews"]')).filter((elm) => elm.checked === true)[0].value === 'yes'
-        ? 0
-        : 1;
-    const reviews = [];
-    Array.from(document.querySelectorAll('.reviews-option'))
-      .filter((elm) => elm.checked)
-      .forEach((review) => reviews.push(review.value));
-    const hasCategories =
-      Array.from(document.querySelectorAll('input[name="has-categories"]')).filter((elm) => elm.checked === true)[0].value ===
-      'yes'
-        ? 0
-        : 1;
-    const categories = [];
-    Array.from(document.querySelectorAll('.categories-options'))
-      .filter((elm) => elm.checked)
-      .forEach((review) => categories.push(review.value));
-    const hasContactForm =
-      Array.from(document.querySelectorAll('input[name="has-contact-us"]')).filter((elm) => elm.checked === true)[0].value ===
-      'yes'
-        ? 0
-        : 1;
+    const homeBtnFunction = getSelectedValue('select[name="home-btn-function"]');
+    const hasReviews = getYesNo('input[name="has-reviews"]');
+    const reviews = getChecked('.reviews-option');
+    const hasCategories = getYesNo('input[name="has-categories"]');
+    const categories = getChecked('.categories-options');
+    const hasContactForm = getYesNo('input[name="has-contact-us"]');
     const bodyObj = {
       homeTitle: e.target[0].value,
       homeH2: e.target[1]?.value,
       homeH3: e.target[2]?.value,
       homeImgUrl: e.target[3]?.value,
-      homeImgType: homeImgType,
+      homeImgType: parseInt(homeImgType),
       homeText: e.target[7]?.value,
       homeBtnText: homeBtnText,
       homeBtnFunction: homeBtnFunction,
       hasReviews: hasReviews,
-      selectedReviews: reviews.toString(),
+      selectedReviews: reviews,
       hasCategories: hasCategories,
-      selectedCategories: categories.toString(),
+      selectedCategories: categories,
       hasContactForm: hasContactForm,
     };
     useFetch('homePage', 'POST', bodyObj);
@@ -122,7 +106,7 @@ export default function HomeForm() {
             type='radio'
             id='overlay'
             name='img-type'
-            value='overlay'
+            value='1'
           />
           <label htmlFor='overlay'>Text Overlay</label>
         </div>
@@ -131,7 +115,7 @@ export default function HomeForm() {
             type='radio'
             id='no-overlay'
             name='img-type'
-            value='no-overlay'
+            value='2'
           />
           <label htmlFor='no-overlay'>No Text Overlay</label>
         </div>
@@ -160,8 +144,8 @@ export default function HomeForm() {
           name='home-btn-function'
           id='home-btn-funtion-select'
         >
-          <option value='contact'>contact us page redirect</option>
-          <option value='about'>about us page redirect</option>
+          <option value='1'>contact us page redirect</option>
+          <option value='2'>about us page redirect</option>
         </select>
       </div>
       <fieldset>
