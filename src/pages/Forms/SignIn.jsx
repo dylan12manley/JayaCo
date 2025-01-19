@@ -15,7 +15,7 @@ export default function SignIn() {
         const user = userCredential.user;
         alert('user has signed in');
         console.log(user, 'has signed in');
-        window.location.href = 'http://localhost:5173/company-info-form';
+        // window.location.href = 'http://localhost:5173/company-info-form';
         // ...
       })
       .catch((error) => {
