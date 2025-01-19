@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import useFetch from '../../functions/useFetch';
 
-export default function ArticleForm() {
+export default function ArticleForm({ catId, catTitle }) {
   const [addMore, setAddMore] = useState(false);
   const [addEvenMore, setAddEvenMore] = useState(false);
 
@@ -18,7 +18,8 @@ export default function ArticleForm() {
       articleTextTwo: addMore ? e.target[7]?.value : null,
       articleImgUrlThree: addMore && addEvenMore ? e.target[11 + indexAdjustment]?.value : null,
       articleTextThree: addMore && addEvenMore ? e.target[12 + indexAdjustment]?.value : null,
-      articleStyle: e.target[13 + indexAdjustment]?.value,
+      articleStyle: parseInt(e.target[13 + indexAdjustment]?.value),
+      categoryId: catId,
     };
     useFetch('categoryArticles', 'POST', bodyObj);
   }
@@ -34,7 +35,7 @@ export default function ArticleForm() {
         onSubmit={handleSubmitArticleForm}
         name='article-form'
       >
-        <h2>Category Article Form</h2>
+        <h2>Add article to {catTitle}</h2>
         <div className='form-input'>
           <label htmlFor='articleTitle'>Article Title:</label>
           <input

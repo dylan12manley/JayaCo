@@ -24,7 +24,7 @@ export default function CategoryForm() {
   }
   const arrayPlaceholder = ['option1', 'option2', 'option3', 'option4'];
   return (
-    <>
+    <main>
       <form
         onSubmit={handleSubmitCategory}
         name='categoryForm'
@@ -106,6 +106,6 @@ export default function CategoryForm() {
           <button type='submit'>Submit Category</button>
         </div>
       </form>
-    </>
+    </main>
   );
 }

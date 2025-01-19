@@ -10,6 +10,7 @@ import Forms from './pages/Forms/Forms';
 import HeaderForm from './pages/Forms/HeaderForm';
 import MainForm from './pages/Forms/MainForm';
 import CompanyInfoForm from './pages/Forms/CompanyInfoForm';
+import CategoryForm from './pages/Forms/CategoryForm';
 import Login from './pages/Login/Login';
 import Categories from './pages/Categoires/Categories';
 
@@ -51,6 +52,10 @@ export default function App() {
         <Route
           path='/login'
           element={<Login />}
+        />
+        <Route
+          path='/category-form'
+          element={<CategoryForm />}
         />
         <Route
           path='/categories'
