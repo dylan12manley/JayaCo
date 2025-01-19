@@ -17,6 +17,15 @@ import btn2TextReducer from '../components/ColorPicker/btn2TextSlice';
 import mainFontReducer from '../reducers/mainFontSlice';
 import secondaryFontReducer from '../reducers/secondaryFontSlice';
 
+import headerFooterReducer from '../reducers/headerFooterSlice';
+import aboutReducer from '../reducers/aboutSlice';
+import articlesReducer from '../reducers/articlesSlice';
+import categoriesReducer from '../reducers/categoriesSlice';
+import companyInfoReducer from '../reducers/companyInfoSlice';
+import generalReducer from '../reducers/generalSlice';
+import homeReducer from '../reducers/homeSlice';
+import reviewsReducer from '../reducers/reviewsSlice';
+
 export default configureStore({
   reducer: {
     headerBG: headerBGReducer,
@@ -34,5 +43,13 @@ export default configureStore({
     btn2TextColor: btn2TextReducer,
     mainFont: mainFontReducer,
     secondaryFont: secondaryFontReducer,
+    headerFooter: headerFooterReducer,
+    about: aboutReducer,
+    articles: articlesReducer,
+    categories: categoriesReducer,
+    companyInfo: companyInfoReducer,
+    general: generalReducer,
+    home: homeReducer,
+    reviews: reviewsReducer,
   },
 });
