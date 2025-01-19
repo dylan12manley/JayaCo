@@ -43,3 +43,7 @@ main {
     margin: 0 10px;
   }
 }
+
+#about-bottom {
+  display: none;
+}
