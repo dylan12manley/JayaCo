@@ -13,6 +13,7 @@ import CompanyInfoForm from './pages/Forms/CompanyInfoForm';
 import CategoryForm from './pages/Forms/CategoryForm';
 import Login from './pages/Login/Login';
 import Categories from './pages/Categoires/Categories';
+import UserLanding from './pages/UserLanding/UserLanding';
 
 import Error from './pages/Error/Error';
 
@@ -60,6 +61,10 @@ export default function App() {
         <Route
           path='/categories'
           element={<Categories />}
+        />
+        <Route
+          path='/welcome-user'
+          element={<UserLanding />}
         />
         <Route
           path='*'
