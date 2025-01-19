@@ -1,0 +1,19 @@
+.categories-page {
+  .all-categories {
+    .category {
+      display: flex;
+      flex-direction: column;
+      .cat-body {
+        display: flex;
+      }
+      .cat-h3-and-text {
+        width: 50%;
+        width: 300px;
+      }
+      .cat-img {
+        width: 300px;
+        object-fit: cover;
+      }
+    }
+  }
+}

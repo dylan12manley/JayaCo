@@ -78,5 +78,23 @@ export default function mainData() {
     ],
     header: ['smallLogoUrl', 'hasSocial', 'hasContact', 'hasAbout', 'styleType'],
     footer: ['hasSocial', 'styleType'],
+    about: [
+      'aboutTitle',
+      'aboutSubH1',
+      'aboutP1',
+      'aboutImgUrl1',
+      'aboutSubH2',
+      'aboutP2',
+      'aboutImgUrl2',
+      'aboutSubH3',
+      'aboutP3',
+      'aboutImgUrl3',
+      'aboutSubH4',
+      'aboutP4',
+      'aboutImgUrl4',
+      'aboutSubH5',
+      'aboutP5',
+      'aboutImgUrl5',
+    ],
   };
 }

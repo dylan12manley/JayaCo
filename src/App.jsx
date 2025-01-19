@@ -11,6 +11,7 @@ import HeaderForm from './pages/Forms/HeaderForm';
 import MainForm from './pages/Forms/MainForm';
 import CompanyInfoForm from './pages/Forms/CompanyInfoForm';
 import Login from './pages/Login/Login';
+import Categories from './pages/Categoires/Categories';
 
 import Error from './pages/Error/Error';
 
@@ -50,6 +51,10 @@ export default function App() {
         <Route
           path='/login'
           element={<Login />}
+        />
+        <Route
+          path='/categories'
+          element={<Categories />}
         />
         <Route
           path='*'
