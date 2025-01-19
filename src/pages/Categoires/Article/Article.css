@@ -1,0 +1,16 @@
+.article {
+  .art-part {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 20px;
+    * {
+      padding: 20px;
+    }
+    img {
+      width: 300px;
+    }
+    p {
+    }
+  }
+}
