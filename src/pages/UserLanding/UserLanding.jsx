@@ -11,6 +11,7 @@ import { setHome } from '../../reducers/homeSlice';
 import { setReviews } from '../../reducers/reviewsSlice';
 
 export default function UserLanding() {
+  const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(true);
 
   function handleClickGoToForms() {
@@ -25,28 +26,28 @@ export default function UserLanding() {
         if (data) {
           switch (table) {
             case 'about':
-              setAbout(data);
+              dispatch(setAbout(data));
               break;
             case 'categories':
-              setCategories(data);
+              dispatch(setCategories(data));
               break;
             case 'categoryArticles':
-              setArticles(data);
+              dispatch(setArticles(data));
               break;
             case 'companyInfo':
-              setCompanyInfo(data);
+              dispatch(setCompanyInfo(data));
               break;
             case 'general':
-              setGeneral(data);
+              dispatch(setGeneral(data));
               break;
             case 'headerFooter':
-              setHeaderFooter(data);
+              dispatch(setHeaderFooter(data));
               break;
             case 'homePage':
-              setHome(data);
+              dispatch(setHome(data));
               break;
             case 'reviews':
-              setReviews(data);
+              dispatch(setReviews(data));
               break;
             default:
               alert(`could not load ${table}`);

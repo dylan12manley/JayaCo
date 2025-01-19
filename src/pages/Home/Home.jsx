@@ -4,12 +4,18 @@ import { useSelector } from 'react-redux';
 import { GET } from '../../functions/fetch';
 
 export default function Home() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [data, setData] = useState(useSelector((state) => state.home.value));
   const [dataLength, setDataLength] = useState(0);
 
   useEffect(() => {
+    console.log(data[11]);
+    if (data.length > 0) {
+      setDataLength(data.length - 1);
+      return;
+    }
     const fetchData = async () => {
+      setIsLoading(true);
       try {
         const { data } = await GET('homePage');
         if (data) {
@@ -25,10 +31,8 @@ export default function Home() {
     fetchData();
   }, []);
 
-  console.log(data);
-
   return isLoading ? (
-    'Loading...'
+    'Home page content is loading...'
   ) : (
     <main id='home-page'>
       <h1>{data[dataLength]?.homeTitle}</h1>
