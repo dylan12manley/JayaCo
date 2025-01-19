@@ -1,5 +1,7 @@
 .categories-page {
   .category {
+    border: 2px solid #19323c;
+    width: 90vw;
     display: flex;
     flex-direction: column;
 
@@ -27,9 +29,16 @@
       padding: 20px;
     }
 
+    .articles {
+      /* :last-child { */
+      border-bottom: 1px solid #19323c;
+      /* } */
+    }
+
     .show-article-dialog {
       width: 200px;
       align-self: center;
+      margin: 20px;
     }
   }
 

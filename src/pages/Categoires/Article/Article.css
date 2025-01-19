@@ -1,4 +1,5 @@
 .article {
+  border-top: 1px solid #19323c;
   .art-part {
     display: flex;
     flex-direction: row;

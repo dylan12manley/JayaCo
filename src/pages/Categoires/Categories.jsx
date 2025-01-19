@@ -10,11 +10,11 @@ export default function Categories() {
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
-    const fetchCategories = async () => {
+    const fetchTable = async (table) => {
       try {
-        const { data } = await GET('categories');
+        const { data } = await GET(table);
         if (data) {
-          setCategories(data);
+          table === 'categories' ? setCategories(data) : setArticles(data);
         }
       } catch (error) {
         console.log(error);
@@ -22,42 +22,26 @@ export default function Categories() {
         setIsLoading(false);
       }
     };
-    fetchCategories();
-    const fetchArticles = async () => {
-      try {
-        const { data } = await GET('categoryArticles');
-        if (data) {
-          setArticles(data);
-        }
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    fetchArticles();
+    fetchTable('categories');
+    fetchTable('categoryArticles');
   }, []);
 
   useEffect(() => {
-    console.log(isLoading);
     if (!isLoading) {
       const dialogs = document.querySelectorAll('dialog');
       const showButtons = document.querySelectorAll('dialog + button');
       const closeButtons = document.querySelectorAll('.close-article-dialog');
       let loopIndex = 0;
       dialogs.forEach((d) => {
-        // showButtons.forEach((showBtn) => {
         showButtons[loopIndex].addEventListener('click', () => {
           d.showModal();
         });
         closeButtons[loopIndex].addEventListener('click', () => {
           d.close();
         });
-        console.log(closeButtons[loopIndex]);
         loopIndex++;
       });
     }
-    console.log('articles', articles);
   }, [isLoading]);
 
   function getCatImg(cat) {
@@ -100,17 +84,19 @@ export default function Categories() {
                   {i % 2 === 0 ? getCatRest(cat) : getCatImg(cat)}
                   {i % 2 != 0 ? getCatRest(cat) : getCatImg(cat)}
                 </div>
-                {articles
-                  .filter((article) => parseInt(article.categoryId) === cat.id)
-                  .map((article, i) => {
-                    return (
-                      <Article
-                        data={article}
-                        index={i}
-                        key={i}
-                      />
-                    );
-                  })}
+                <div className='articles'>
+                  {articles
+                    .filter((article) => parseInt(article.categoryId) === cat.id)
+                    .map((article, i) => {
+                      return (
+                        <Article
+                          data={article}
+                          index={i}
+                          key={i}
+                        />
+                      );
+                    })}
+                </div>
                 <dialog>
                   <button
                     autoFocus
