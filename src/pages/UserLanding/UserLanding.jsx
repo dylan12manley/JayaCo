@@ -9,18 +9,19 @@ import { setCompanyInfo } from '../../reducers/companyInfoSlice';
 import { setGeneral } from '../../reducers/generalSlice';
 import { setHome } from '../../reducers/homeSlice';
 import { setReviews } from '../../reducers/reviewsSlice';
+import './UserLanding.css';
 
 export default function UserLanding() {
   const dispatch = useDispatch();
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   function handleClickGoToForms() {
     window.location.href = 'http://localhost:5173/main-form';
   }
 
   function handleClickLoadData() {
-    console.log('load data clicked');
     const fetchTable = async (table) => {
+      setIsLoading(true);
       try {
         const { data } = await GET(table);
         if (data) {
@@ -69,16 +70,17 @@ export default function UserLanding() {
     <main className='user-landing-page'>
       <h1>Welcome to your website!</h1>
       <h2>From this page you can either start building and customizing your website or load the existing data.</h2>
-      <div>
+      <div className='landing-btns'>
         <div>
-          <p>Click below to start building your website</p>
+          <span>Click below to start building your website</span>
           <button onClick={handleClickGoToForms}>Go To Forms</button>
         </div>
         <div>
-          <p>Click below to load existing data</p>
+          <span>Click below to load existing data</span>
           <button onClick={handleClickLoadData}>Load Data</button>
         </div>
       </div>
+      <div>{isLoading ? 'data is loading..' : ''}</div>
     </main>
   );
 }
