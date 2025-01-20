@@ -1,0 +1,22 @@
+.user-landing-page {
+  .landing-btns {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    div {
+      margin: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      button {
+        width: 200px;
+        align-self: center;
+      }
+    }
+  }
+  @media (min-width: 961px) {
+    .landing-btns {
+      flex-direction: row;
+    }
+  }
+}

@@ -21,6 +21,9 @@ export default function MainForm() {
   const mainFont = useSelector((state) => state.mainFont.value);
   const secondaryFont = useSelector((state) => state.secondaryFont.value);
 
+  const generalData = useSelector((state) => state.general.value);
+  console.log(generalData);
+
   function handleClickGeneralStyling(e) {
     e.preventDefault();
     const bodyObj = {

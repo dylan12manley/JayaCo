@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 export const headerTextColorSlice = createSlice({
   name: 'headerTextColor',
   initialState: {
-    value: '#ffffff',
+    value: '#000000',
   },
   reducers: {
     selectHeaderTextColor: (state, action) => {
