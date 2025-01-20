@@ -14,6 +14,7 @@ import CategoryForm from './pages/Forms/CategoryForm';
 import Login from './pages/Login/Login';
 import Categories from './pages/Categoires/Categories';
 import UserLanding from './pages/UserLanding/UserLanding';
+import AboutForm from './pages/Forms/AboutForm';
 
 import Error from './pages/Error/Error';
 
@@ -65,6 +66,10 @@ export default function App() {
         <Route
           path='/welcome-user'
           element={<UserLanding />}
+        />
+        <Route
+          path='/about-form'
+          element={<AboutForm />}
         />
         <Route
           path='*'
