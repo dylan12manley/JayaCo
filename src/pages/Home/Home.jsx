@@ -12,7 +12,6 @@ export default function Home() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log(data);
     if (data.length > 0) {
       setDataLength(data.length - 1);
       return;
